@@ -27,6 +27,48 @@ namespace Contracts.Tests
         }
 
         [TestMethod()]
+        public void RegisterUserUsernameExistsTest()
+        {
+            //TODO: Implement set up method to insert a player in the database
+            try
+            {
+                PlayerDC newPlayer = new PlayerDC()
+                {
+                    Username = "Pale04",
+                    Email = "epalemolina@hotmail.com",
+                    Password = "asdfas´461ds+"
+                };
+                int result = ServiceImplementation.RegisterUser(newPlayer);
+                Assert.Fail("RegisterUserUsernameExistsTest");
+            }
+            catch (Exception error)
+            {
+                Assert.AreEqual(error.Message, "An account with the same username exists", "RegisterUserUsernameExistsTest");
+            }
+        }
+
+        [TestMethod()]
+        public void RegisterUserEmailExistsTest()
+        {
+            //TODO: Implement set up method to insert a player in the database
+            try
+            {
+                PlayerDC newPlayer = new PlayerDC()
+                {
+                    Username = "Pale",
+                    Email = "epalemolina@hotmail.com",
+                    Password = "asdfas´461ds+"
+                };
+                int result = ServiceImplementation.RegisterUser(newPlayer);
+                Assert.Fail("RegisterUserEmailExistsTest");
+            }
+            catch (Exception error)
+            {
+                Assert.AreEqual(error.Message, "An account with the same email exists", "RegisterUserEmailExistsTest");
+            }
+        }
+
+         [TestMethod()]
         public void LogInSuccesfulTest()
         {
             //TODO: Implement set up method to insert a player in the database
